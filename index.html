@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {display: none; font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Rating state start -->
+    <div id="rating" class="">
+      <img class="star" alt="star" src="./images/icon-star.svg">
+      <h1>How did we do?</h1>
+
+      <p>Please let us know how we did with your support request. All feedback is appreciated 
+      to help us improve our offering!</p>
+
+      <div class="numbers">
+          <button class="btn">1</button>
+          <button class="btn">2</button>
+          <button class="btn">3</button>
+          <button class="btn">4</button>
+          <button class="btn">5</button>
+      </div>
+      <button id="submit" class="submit" type="button">Submit</button>
+    </div>
+    <!-- Rating state end -->
+
+    <!-- Thank you state start -->
+    <div id="thanks" class="thanks hide">
+      <img src="./images/illustration-thank-you.svg" alt="illustration" id="image">
+      <p class="note">You selected <span id="rate"></span> out of 5</p>
+
+      <h2>Thank you!</h2>
+
+      <p>We appreciate you taking the time to give a rating. If you ever need more support, 
+      don’t hesitate to get in touch!</p>
+
+    <!-- Thank you state end -->
+
+    </div>
+    <div class="attribution">
+      Challenge by <a rel="noopener" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </main>
+  <script>
+    const rating = document.getElementById('rating');
+    const thanks = document.getElementById('thanks');
+    const ratings = document.querySelectorAll('.btn');
+    const submitBtn = document.getElementById('submit');
+    const rate = document.getElementById('rate');
+    const image = document.getElementById('image');
+
+    ratings.forEach(rating => {
+      rating.addEventListener('click' , () => {
+        rate.innerText = rating.textContent
+      })
+    });
+
+    submitBtn.addEventListener('click', () => {
+      rating.classList.add('hide')
+      thanks.classList.remove('hide')
+    })
+
+    image.addEventListener('click', () => {
+      rating.classList.remove('hide')
+      thanks.classList.add('hide')
+    })
+
+  </script>
+</body>
+</html>
